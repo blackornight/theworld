@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>在线聊天室登录</title>
+<script type="text/javascript" src="/onlinechat/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/onlinechat/js/base.js"></script>
+</head>
+<body>
+<form>
+	<div>
+		<div id="top"></div>
+		<div id="mid">
+			用户名：<input type="text" id="name" name="name"/></br>
+			密&nbsp;&nbsp;码：<input type="password" id="password" name="password"/></br>
+			<input type="button" value="登录" onclick="fnCheckLogin()"/>
+		</div>
+		<div id="bot"></div>
+	</div>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+var loginUrl = "/onlinechat/login";
+var root = "/onliechat";
+
+//登录函数，检查登录是否成功
+function fnCheckLogin(){
+	var name = $("#name").val();
+	var password = $("#password").val();
+	var param = {
+			"name":name,
+			"password":password
+	};
+	var url=loginUrl+"/checkLogin.do";
+	Submit(
+			url,
+			param,
+			function(data){
+				if(data.status=='200'){
+					alert('登录成功！');
+				}else{
+					alert('登录失败!');
+				}
+			},
+			function(data){
+				console.log(data);
+			});
+}
+
+
+</script>

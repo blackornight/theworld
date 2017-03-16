@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>index</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="/onlinechat/resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="/onlinechat/resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="/onlinechat/data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="/onlinechat/files/index/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="/onlinechat/resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="/onlinechat/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/axQuery.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/globals.js"></script>
+    <script src="/onlinechat/resources/scripts/axutils.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/annotation.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/axQuery.std.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/doc.js"></script>
+    <script src="/onlinechat/data/document.js"></script>
+    <script src="/onlinechat/resources/scripts/messagecenter.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/events.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/recording.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/action.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/expr.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/geometry.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/flyout.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/ie.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/model.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/repeater.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/sto.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/utils.temp.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/variables.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/drag.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/move.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/visibility.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/style.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/adaptive.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/tree.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/init.temp.js"></script>
+    <script src="/onlinechat/files/index/data.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/legacy.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/viewer.js"></script>
+    <script src="/onlinechat/resources/scripts/axure/math.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return '/onlinechat/resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return '/onlinechat/resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return '/onlinechat/resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- name (文本框) -->
+      <div id="u0" class="ax_default text_field" data-label="name">
+        <input id="u0_input" type="text" value="" alt="用户名"/>
+      </div>
+
+      <!-- password (文本框) -->
+      <div id="u1" class="ax_default text_field" data-label="password">
+        <input id="u1_input" type="password" value=""/>
+      </div>
+
+      <!-- login (提交按钮) -->
+      <div id="u2" class="ax_default html_button" data-label="login">
+        <input id="u2_input" type="button" value="登录" onclick="fnCheckLogin()"/>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u3" class="ax_default box_1">
+        <div id="u3_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u5" class="ax_default box_1">
+        <div id="u5_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u6" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+var loginUrl = "/onlinechat/login";
+var root = "/onliechat";
+function fnSubmit(Url,param,fnSuccess,fnError){
+	$.ajax({
+		type:"post",
+		dataType:"json",
+		data:param,
+		url:Url,
+		success:fnSuccess,
+		error:fnError
+	});
+}
+
+function fnCheckLogin(){
+	var name = $("#u0_input").val();
+	var password = $("#u1_input").val();
+	var param = {
+			"name":name,
+			"password":password
+	};
+	var url=loginUrl+"/checkLogin.do";
+	fnSubmit(
+			url,
+			param,
+			function(data){
+				if(data.status=='200'){
+					alert('登录成功！');
+				}else{
+					alert('登录失败!');
+				}
+			},
+			function(data){
+				console.log(data);
+			});
+}
+
+
+</script>
